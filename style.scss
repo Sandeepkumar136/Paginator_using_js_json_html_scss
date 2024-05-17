@@ -46,4 +46,26 @@
     font-size: 1rem;
     font-weight: 450;
 }
-
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.pagination a{
+    text-decoration: none;
+    border: 2px solid #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #000;
+    border: 2px solid #0048ff;
+    transition: 0.5s all inherit;
+}
+.pagination a:hover{
+    background-color: #0048ff;
+    color: #f9f9f9;
+}
+.pagination a:active{
+    background-color: #0048ff;
+    color: #f9f9f9;
+}
