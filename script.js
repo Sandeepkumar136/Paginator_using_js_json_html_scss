@@ -1,36 +1,79 @@
-function DisMenuItem(Peram){
-    let Config=Peram.map((content)=>{
-        return `<div class="cards">
-        <img class="image" src="${content.image}" alt="${content.alt}"/>
-        <h2 class="card-heading">${content.heading}</h2>
-        <p class="text">${content.text}</p>
-    </div>`
-    }).join('');
-    return Config;
-}
-
-const card_in_page=4;
-let currentpage=1;
-let totalpage=0;
-let data=[];
-
-
+// Loading JSON Data
+let jsonData=[];
 fetch('./data.json')
 .then(response=>response.json())
 .then(data=>{
-    // const container=document.getElementById("card-container");
-    // container.innerHTML=DisMenuItem(data);
-    totalpage=Math.ceil(data.length/card_in_page);
-    displaypage(currentpage)
-    // setupPagingation();
+    jsonData =data;
+    updatePaginator(1);
 })
-.catch(error=>console.error('Error fectching the JSON data', error));
+.catch(error=>console.error('Error loading JSON DATA:', error));
 
-function displaypage(page){
-    const startIndex=(page -1)*card_in_page;
-    const endIndex=startIndex+card_in_page;
-    const paginatedData=data.slice(startIndex, endIndex);
+// Pagination Logic
+function paginate(data,page,perpage){
+    const totalItems=data.length;
+    const totalpages=Math.ceil(totalItems/perpage);
+    currentpage=Math.min(Math.max(page,1), totalpages);
+    const startIndex=(currentpage-1)*perpage;
+    const endIndex=Math.min(startIndex+perpage, totalItems);
+
+    return{
+        currentpage,
+        perpage,
+        totalpages,
+        data:data.slice(startIndex, endIndex)
+    };
+
+};
+
+// Rendering data
+function RenderData(paginatedData){
     const container=document.getElementById('card-container');
-    container.innerHTML=DisMenuItem(paginatedData)
+    container.innerHTML=''; 
+    // clear perv content
+
+    paginatedData.data.forEach(item => {
+        const card_contian=document.createElement('div');
+        card_contian.className='cards';
+        card_contian.innerHTML=`
+                <img class="image" src="${item.image}" alt="${item.alt}"/>
+                <h2 class="card-heading">${item.heading}</h2>
+                <p class="text">${item.text}</p>
+
+
+        `;
+        container.appendChild(card_contian);
+    });
 }
 
+
+function updatePagination(page){
+    const paginatedData=paginate(jsonData, page, perpage);
+    RenderData(paginatedData);
+    currentpage=paginatedData.currentpage;
+}
+
+let currentpage=1;
+const perpage=4;
+
+document.getElementById('prev').addEventListener('click', ()=>{
+    if(currentpage >1){
+        updatePagination(currentpage-1);
+    }
+});
+
+document.getElementById('next').addEventListener('click', ()=>{
+    const totalpages=Math.ceil(jsonData.length/perpage);
+    if(currentpage<totalpages){
+        updatePagination(currentpage+1);
+    }
+});
+document.getElementById('page-1').addEventListener('click', ()=>{
+    updatePagination(1)
+});
+document.getElementById('page-2').addEventListener('click', ()=>{
+    updatePagination(1)
+});
+document.getElementById('page-3').addEventListener('click', ()=>{
+    updatePagination(1)
+});
+console.log(jsonData);

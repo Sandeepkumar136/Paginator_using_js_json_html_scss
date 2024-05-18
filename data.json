@@ -46,53 +46,5 @@
         "alt": "image",
         "heading": "Tab",
         "text": "Worth it."
-    },
-    {
-        "image": "./assets/headphone.jpg",
-        "alt": "image",
-        "heading": "Boat Rockerz 450",
-        "text": "This is superb headphone Which i Used."
-    },
-    {
-        "image": "./assets/pad.jpg",
-        "alt": "image",
-        "heading": "XXL Pad",
-        "text": "Suberb and Best in Quailty"
-    },
-    {
-        "image": "./assets/hub.jpg",
-        "alt": "image",
-        "heading": "USB Hub",
-        "text": "Not Compromised in Quailty"
-    },
-    {
-        "image": "./assets/mouse.jpg",
-        "alt": "image",
-        "heading": "Gaming mouse",
-        "text": "This Product will not disapointed me."
-    },
-    {
-        "image": "./assets/ssd2.jpg",
-        "alt": "image",
-        "heading": "SSD",
-        "text": "Subreb in Speed."
-    },
-    {
-        "image": "./assets/stand.jpg",
-        "alt": "image",
-        "heading": "Laptop Stand",
-        "text": "Built in Matel."
-    },
-    {
-        "image": "./assets/pendrive.jpg",
-        "alt": "image",
-        "heading": "pendrive",
-        "text": "Not Compromised in speed"
-    },
-    {
-        "image": "./assets/tab3.jpg",
-        "alt": "image",
-        "heading": "Tab",
-        "text": "Worth it."
     }
 ]
